@@ -1,6 +1,8 @@
 from typing import override
 import pygame
+from pygame.draw import circle
 from circleshape import CircleShape
+from constants import SHOT_RADIUS
 
 
 class Asteroid(CircleShape):
@@ -19,8 +21,8 @@ class Shot(CircleShape):
 
     @override
     def draw(self, screen):
-        return super().draw(screen)
+        pygame.draw.circle(screen, "White",(self.position.x, self.position.y), SHOT_RADIUS, 2)
 
     @override
     def update(self, dt):
-        return super().update(dt)
+        self.position += (self.velocity * dt)
